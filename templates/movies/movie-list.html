@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <article>
+        <section class="actors">
+            <div class="container">
+
+                <p class="section-subtitle">Movie</p>
+
+                <h2 class="h2 section-title">Popular Movies</h2>
+
+                <ul class="movies-list">
+                    {% for m in object_list %}
+                    <li>
+                        <div class="movie-card">
+
+                            <a href="{% url 'movie_details' movie_id=m.id %}">
+                                <figure class="card-banner">
+                                    <img src="{{ m.movie_image }}" alt="{{ m.title}}">
+                                </figure>
+                            </a>
+
+                            <div class="title-wrapper">
+                                <a href="./movie-details.html">
+                                    <h3 class="card-title">{{ m.title}}</h3>
+                                </a>
+
+                                <time datetime="2022">2022</time>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="badge badge-outline">2K</div>
+
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
+
+                                    <data>8.6</data>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!--
+          - #CTA
+        -->
+
+        <section class="cta">
+            <div class="container">
+
+                <div class="title-wrapper">
+                    <h2 class="cta-title">Trial start first 30 days.</h2>
+
+                    <p class="cta-text">
+                        Enter your email to create or restart your membership.
+                    </p>
+                </div>
+
+                <form action="" class="cta-form">
+                    <input type="email" name="email" required placeholder="Enter your email" class="email-field">
+
+                    <button type="submit" class="cta-form-btn">Get started</button>
+                </form>
+
+            </div>
+        </section>
+
+    </article>
+{% endblock %}

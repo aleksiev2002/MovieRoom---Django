@@ -1,0 +1,87 @@
+{#<div>#}
+{#    {% for person in actor_list %}#}
+{#    <h1>{{ person.name }}</h1>#}
+{#        <img src="{{ person.movie_image }}">#}
+{#        {{ person.biography }}#}
+{#    {% endfor %}#}
+{#</div>#}
+
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <article>
+        <!--
+          - #ACTORS
+        -->
+
+        <section class="actors">
+            <div class="container">
+
+                <p class="section-subtitle"></p>
+
+                <h2 class="h2 section-title">Popular Actors</h2>
+
+                <ul class="movies-list">
+                    {% for actor in actor_list %}
+                    <li>
+                        <div class="movie-card">
+
+                            <a href="./movie-details.html">
+                                <figure class="card-banner">
+                                    <img src="{{ actor.movie_image }}" alt="{{ actor.name}}">
+                                </figure>
+                            </a>
+
+                            <div class="title-wrapper">
+                                <a href="./movie-details.html">
+                                    <h3 class="card-title">{{ actor.name}}</h3>
+                                </a>
+
+                                <time datetime="2022">{{ actor.birthday }}</time>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="badge badge-outline">2K</div>
+
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
+
+                                    <data>8.6</data>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!--
+          - #CTA
+        -->
+
+        <section class="cta">
+            <div class="container">
+
+                <div class="title-wrapper">
+                    <h2 class="cta-title">Trial start first 30 days.</h2>
+
+                    <p class="cta-text">
+                        Enter your email to create or restart your membership.
+                    </p>
+                </div>
+
+                <form action="" class="cta-form">
+                    <input type="email" name="email" required placeholder="Enter your email" class="email-field">
+
+                    <button type="submit" class="cta-form-btn">Get started</button>
+                </form>
+
+            </div>
+        </section>
+
+    </article>
+{% endblock %}

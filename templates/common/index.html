@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <article>
+
+        <!--
+          - #HERO
+        -->
+
+        <section class="hero">
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <p class="hero-subtitle">MovieRoom</p>
+
+                    <h1 class="h1 hero-title">
+                        Unlimited <strong>Movie</strong>, TVs Shows, & More.
+                    </h1>
+
+                    <div class="meta-wrapper">
+
+                        <div class="badge-wrapper">
+                            <div class="badge badge-fill">PG 18</div>
+
+                            <div class="badge badge-outline">HD</div>
+                        </div>
+
+                        <div class="ganre-wrapper">
+                            <a href="#">Romance,</a>
+
+                            <a href="#">Drama</a>
+                        </div>
+
+                        <div class="date-time">
+
+                            <div>
+                                <ion-icon name="calendar-outline"></ion-icon>
+
+                                <time datetime="2022">2022</time>
+                            </div>
+
+                            <div>
+                                <ion-icon name="time-outline"></ion-icon>
+
+                                <time datetime="PT128M">128 min</time>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <button class="btn btn-primary">
+                        <ion-icon name="play"></ion-icon>
+
+                        <span>Watch now</span>
+                    </button>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!--
+          - #UPCOMING
+        -->
+
+        <section class="upcoming">
+            <div class="container">
+
+                <div class="flex-wrapper">
+
+                    <div class="title-wrapper">
+                        <p class="section-subtitle">Online Streaming</p>
+
+                        <h2 class="h2 section-title">Upcoming Movies</h2>
+                    </div>
+
+                    <ul class="filter-list">
+
+                        <li>
+                            <a href="{% url 'movie_list' %}">
+                            <button  class="filter-btn">Movies</button>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'list of actors' %}">
+                            <button class="filter-btn">Actors</button>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <ul class="movies-list  has-scrollbar">
+                    {% for movie in upcoming_movies %}
+                    <li>
+                        <div class="movie-card">
+
+                                <figure class="card-banner">
+                                    <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" alt="{{ movie.title }}">
+                                </figure>
+
+                            <div class="title-wrapper">
+                                    <h3 class="card-title">{{ movie.title }}</h3>
+
+                                <time datetime="2022">{{ movie.release_date }}</time>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="badge badge-outline">HD</div>
+
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
+
+                                    <data>{{ movie.vote_average }}</data>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!--
+          - #SERVICE
+        -->
+
+        <!--
+          - #TOP RATED
+        -->
+
+        <section class="top-rated">
+            <div class="container">
+
+                <p class="section-subtitle">Online Streaming</p>
+
+                <h2 class="h2 section-title">Top Rated Movies</h2>
+
+                <ul class="filter-list">
+                    <li>
+                        <a href="{% url 'movie_list' %}">
+                        <button class="filter-btn">Movies</button>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{% url 'list of actors' %}">
+                        <button class="filter-btn">Actors</button>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <ul class="movies-list">
+                    {% for m in movies %}
+                    <li>
+                        <div class="movie-card">
+
+                            <a href="{% url 'movie_details' movie_id=m.id %}">
+                                <figure class="card-banner">
+                                    <img src="{{ m.movie_image }}" alt="{{ m.title }}">
+                                </figure>
+                            </a>
+
+                            <div class="title-wrapper">
+                                <a href="{% url 'movie_details' movie_id=m.id %}">
+                                    <h3 class="card-title">{{ m.title }}</h3>
+                                </a>
+
+                                <time datetime="2022">2022</time>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="badge badge-outline">4K</div>
+
+                                <div class="duration">
+                                    <ion-icon name="time-outline"></ion-icon>
+
+                                    <time datetime="PT122M">{{ m.duration }} min</time>
+                                </div>
+
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
+
+                                    <data>7.8</data>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!--
+          - #ACTORS
+        -->
+
+        <section class="actors">
+            <div class="container">
+
+                <p class="section-subtitle">Movie</p>
+
+                <h2 class="h2 section-title">Popular Actors</h2>
+
+                <ul class="movies-list">
+                    {% for actor in actors %}
+                    <li>
+                        <div class="movie-card">
+
+                            <a href="{% url 'actor details' actor_id=actor.id%}">
+                                <figure class="card-banner">
+                                    <img src="{{ actor.movie_image }}" alt="{{ actor.name}}">
+                                </figure>
+                            </a>
+
+                            <div class="title-wrapper">
+                                <a href="./movie-details.html">
+                                    <h3 class="card-title">{{ actor.name}}</h3>
+                                </a>
+
+                                <time datetime="2022">2022</time>
+                            </div>
+
+                            <div class="card-meta">
+                                <div class="badge badge-outline">2K</div>
+
+                                <div class="rating">
+                                    <ion-icon name="star"></ion-icon>
+
+                                    <data>8.6</data>
+                                </div>
+                            </div>
+
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </section>
+
+
+        <!--
+          - #CTA
+        -->
+
+        <section class="cta">
+            <div class="container">
+
+                <div class="title-wrapper">
+                    <h2 class="cta-title">MovieRoom</h2>
+
+                    <p class="cta-text">
+                        Best movie collection
+                    </p>
+                </div>
+
+                <form action="" class="cta-form">
+                    <input type="email" name="email" required placeholder="Enter your email" class="email-field">
+
+                    <button type="submit" class="cta-form-btn">Get started</button>
+                </form>
+
+            </div>
+        </section>
+
+    </article>
+{% endblock %}

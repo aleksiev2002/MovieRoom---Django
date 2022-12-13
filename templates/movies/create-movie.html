@@ -1,0 +1,7 @@
+<div>
+    <form method="post" action="{% url 'create_movie'%}">
+        {{ form.as_p }}
+        <button class="edit-btn" type="submit">Create</button>
+        {% csrf_token %}
+        </form>
+</div>

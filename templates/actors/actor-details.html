@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block page_content %}
+    <article>
+
+      <section class="movie-detail">
+        <div class="container">
+
+          <figure class="movie-detail-banner">
+
+            <img src="{{ actor.movie_image }}" alt="{{ actor.name}}">
+
+          </figure>
+
+          <div class="movie-detail-content">
+
+            <h1 class="h1 detail-title">
+                <strong>{{ actor.name }}</strong>
+            </h1>
+              <h1 class="h3">
+                  Biography</h1>
+
+            <p class="storyline">
+                {{ actor.biography }}
+            </p>
+              <h3 class="h3 detail-title">
+                  Birthday {{ actor.birthday }}
+              </h3>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+{% endblock %}
