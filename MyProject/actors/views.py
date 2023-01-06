@@ -12,6 +12,7 @@ class ActorsListView(LoginRequiredMixin, views.ListView):
 
 
 
+
 def actor_details(request, actor_id):
     actor = Actor.objects.get(id=actor_id)
     context = {

@@ -1,11 +1,3 @@
-{#<div>#}
-{#    {% for person in actor_list %}#}
-{#    <h1>{{ person.name }}</h1>#}
-{#        <img src="{{ person.movie_image }}">#}
-{#        {{ person.biography }}#}
-{#    {% endfor %}#}
-{#</div>#}
-
 {% extends 'base.html' %}
 {% load static %}
 {% block page_content %}
@@ -26,14 +18,14 @@
                     <li>
                         <div class="movie-card">
 
-                            <a href="./movie-details.html">
+                            <a href="{% url 'actor details' actor_id=actor.id %}">
                                 <figure class="card-banner">
                                     <img src="{{ actor.movie_image }}" alt="{{ actor.name}}">
                                 </figure>
                             </a>
 
                             <div class="title-wrapper">
-                                <a href="./movie-details.html">
+                                <a href="{% url 'actor details' actor_id=actor.id %}">
                                     <h3 class="card-title">{{ actor.name}}</h3>
                                 </a>
 
